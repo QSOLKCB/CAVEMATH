@@ -41,6 +41,30 @@ royalty calculator, a petty rock payment desk, and an actual Q16.16
 calculator. Browser computation uses `BigInt` for exact authoritative
 integer arithmetic, not binary floating-point approximations.
 
+## GitHub Pages: LIVE FROM CAVE (AFTER YOU ENABLE IT)
+
+The offline browser demo is designed to run at
+**https://qsolkcb.github.io/CAVEMATH/** once GitHub Pages is enabled and
+the first deployment succeeds.
+
+The [GitHub Pages workflow](.github/workflows/pages.yml) publishes automatically
+after changes reach `main`, or via an explicit manual workflow dispatch.
+It runs the Python tests before packaging **only `index.html`**. The site
+does **not** publish `cavemath.py`, tests, source checkout metadata or
+other repository files. No build system, server, Node, npm or API keys.
+
+**One-time repository owner setup:** Open
+**Settings → Pages → Build and deployment → Source → GitHub Actions**.
+This configuration cannot be done by adding a workflow alone. After merging
+the workflow PR and enabling Pages, check **Actions → Publish Cave Patent Office**
+and, if needed, run it with **Run workflow** on `main`.
+Successful deployments appear under the `github-pages` environment.
+Pull-request branches never deploy.
+
+If Pages isn't enabled, the workflow's configuration step may fail; enable
+GitHub Actions as the publishing source and rerun the failed workflow.
+No action in this repository claims to enable Pages automatically.
+
 ## CLI: CAVE PATENT OFFICE, NOW WITH REAL MATH
 
 Requires Python 3.10+ and the standard library only.
