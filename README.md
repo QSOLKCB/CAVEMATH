@@ -15,13 +15,13 @@
 
 ### 🚨 CAVE PATENT OFFICE: YOU UNDER INVESTIGATION
 
-Somebody wrote \`1\`. Cave Patent Office has opened an imaginary case.
+Somebody wrote `1`. Cave Patent Office has opened an imaginary case.
 No innocent digits. No independent discovery. No sedimentary refunds.
 
 | Crime against cave | Punishment (fictional) |
 | --- | --- |
-| Type \`1\` | 7 sedimentary rocks |
-| Type \`1 + 1\` | 14 sedimentary rocks |
+| Type `1` | 7 sedimentary rocks |
+| Type `1 + 1` | 14 sedimentary rocks |
 | Invent mathematics independently | Rock cease-and-desist |
 | Perform exact Q16.16 arithmetic | Suspiciously competent |
 | Say "I invented Math" | Appointed Chief Numeral Officer |
@@ -38,7 +38,7 @@ CDN, npm, tracking, third-party dependency or network access required.
 
 The demo includes a live **NUMBA 1™ detector**, a fictional sedimentary
 royalty calculator, a petty rock payment desk, and an actual Q16.16
-calculator. Browser computation uses \`BigInt\` for exact authoritative
+calculator. Browser computation uses `BigInt` for exact authoritative
 integer arithmetic, not binary floating-point approximations.
 
 ## CLI: CAVE PATENT OFFICE, NOW WITH REAL MATH
@@ -55,15 +55,15 @@ python3 cavemath.py calc sqrt 2
 python3 -m unittest discover -s tests -v
 ~~~
 
-The CLI supports \`audit --file path.txt\` for UTF-8 files up to 1 MiB.
-The audit counts the digit \`1\` only when not adjacent to another digit:
-\`11\` is not two standalone \`1\` claims; \`1.0\` is one.
+The CLI supports `audit --file path.txt` for UTF-8 files up to 1 MiB.
+The audit counts the digit `1` only when not adjacent to another digit:
+`11` is not two standalone `1` claims; `1.0` is one.
 
 ### Cave math contract (the part without bullshit)
 
 - Signed 32-bit Q16.16, **65,536 raw units per 1**.
 - Decimal-to-fixed parsing truncates **toward zero**.
-- \`add\`, \`sub\`, \`mul\`, \`div\` and \`sqrt\` use integer intermediates.
+- `add`, `sub`, `mul`, `div` and `sqrt` use integer intermediates.
 - Multiply/divide truncate toward zero, including negative results.
 - Square root is the integer floor of the exact scaled radicand.
 - No signed overflow wraparound, division by zero, NaN, Infinity or
