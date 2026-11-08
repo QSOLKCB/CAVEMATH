@@ -14,6 +14,7 @@ concurrency:
 
 jobs:
   package:
+    if: github.ref == 'refs/heads/main'
     name: Test and package static cave
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -45,6 +46,7 @@ jobs:
           path: _site
 
   deploy:
+    if: github.ref == 'refs/heads/main'
     name: Publish to GitHub Pages
     needs: package
     runs-on: ubuntu-latest
