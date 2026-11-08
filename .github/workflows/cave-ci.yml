@@ -1,0 +1,28 @@
+name: Cave Math (real tests, fake patents)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  no-steal-my-numbas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Retrieve cave drawings
+        uses: actions/checkout@v4
+      - name: Verify Python syntax
+        run: python3 -m py_compile cavemath.py tests/test_cavemath.py
+      - name: Refuse false arithmetic
+        run: python3 -m unittest discover -s tests -v
+      - name: Verify machine-readable royalty
+        run: |
+          python3 cavemath.py audit "1 + 1" --json
+          python3 cavemath.py calc div 1 3 --json
+      - name: Check no-build website exists
+        run: test -s index.html

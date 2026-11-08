@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17140f">
+  <meta name="description" content="CAVEMATH: U STEAL MY NUMBAS. NUMBA 1 trademark parody, rock royalties, real Q16.16 arithmetic.">
+  <title>CAVEMATH — U STEAL MY NUMBAS!</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --cave: #17140f; --stone: #292319; --stone2: #362b1d;
+      --sand: #ecddb7; --muted: #b9a888; --orange: #f3a64e;
+      --danger: #ff7558; --good: #b7da8e; --border: #62523b;
+      --mono: ui-monospace, "Cascadia Code", "DejaVu Sans Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--sand); font-family: var(--mono);
+      background: radial-gradient(ellipse at 75% 0%, #4a2d19 0%, transparent 50%),
+                  radial-gradient(ellipse at 8% 65%, #30271c, transparent 48%), var(--cave);
+      line-height: 1.6;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .15;
+      background-image: repeating-linear-gradient(0deg, transparent 0 8px, #ffe6a7 9px, transparent 10px);
+      background-size: 100% 160px; mix-blend-mode: overlay;
+    }
+    a { color: #ffbf73; }
+    a:hover { color: #ffe0a6; }
+    header, main, footer { max-width: 1100px; margin-inline: auto; padding-inline: clamp(18px, 4vw, 48px); }
+    header { padding-top: 34px; }
+    nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .brand { letter-spacing: .18em; font-weight: 900; color: var(--orange); }
+    .tiny { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; }
+    .stamp {
+      border: 2px solid var(--danger); padding: 7px 10px; color: var(--danger);
+      text-transform: uppercase; font-size: .7rem; font-weight: 800; transform: rotate(-2deg);
+      letter-spacing: .07em;
+    }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(180px, .65fr);
+      align-items: center; gap: 22px; padding: 74px 0 48px; }
+    .eyebrow { letter-spacing: .22em; color: var(--orange); font-size: .78rem; font-weight: 900; }
+    h1 { font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-size: clamp(3.2rem, 9vw, 7rem); line-height: .95; letter-spacing: .02em;
+      text-transform: uppercase; margin: 20px 0 0; text-shadow: 5px 6px 0 #5c3420; }
+    h1 span { color: var(--orange); }
+    .tagline { max-width: 550px; font-size: clamp(1rem, 1.75vw, 1.4rem); margin-top: 30px; }
+    .hero-one {
+      text-align: center; font: 900 clamp(8rem, 24vw, 19rem)/1 Impact, sans-serif;
+      color: var(--orange); text-shadow: 9px 9px 0 #7d3d27, 16px 16px 0 #3c2418;
+      transform: rotate(-7deg); user-select: none;
+    }
+    .hero-one small { display: block; font: 900 1rem var(--mono); letter-spacing: .2em; transform: rotate(7deg); }
+    .grunts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
+    .grunt { border: 1px solid var(--border); background: #221b14; padding: 8px 11px; font-size: .8rem; }
+    .strip { padding: 14px 18px; background: #3b251b; border-left: 4px solid var(--danger);
+      font-weight: 700; color: #ffd2a1; margin-bottom: 32px; }
+    h2 { margin: 0 0 9px; text-transform: uppercase; letter-spacing: .04em;
+      font: 900 clamp(1.25rem, 3vw, 1.7rem) Impact, sans-serif; }
+    .sub { margin: 0 0 18px; color: var(--muted); font-size: .9rem; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .panel { background: linear-gradient(155deg, var(--stone2), var(--stone));
+      border: 1px solid var(--border); padding: clamp(18px, 3vw, 26px);
+      box-shadow: 7px 7px 0 #0d0b08; min-width: 0; }
+    .panel strong { color: var(--orange); }
+    label { display: block; margin: 15px 0 6px; font-size: .8rem;
+      text-transform: uppercase; color: var(--sand); font-weight: 800; letter-spacing: .05em; }
+    textarea, input, select {
+      width: 100%; background: #15120f; color: #f6eaca; border: 1px solid var(--border);
+      border-radius: 0; padding: 12px; font: inherit; accent-color: var(--orange);
+    }
+    textarea { resize: vertical; min-height: 98px; }
+    textarea:focus, input:focus, select:focus, button:focus-visible {
+      outline: 3px solid var(--orange); outline-offset: 3px;
+    }
+    button { font: 900 .85rem var(--mono); text-transform: uppercase; cursor: pointer;
+      border-radius: 0; padding: 12px 15px; margin: 10px 6px 0 0; transition: transform .12s;
+      border: 1px solid #e3b27f; background: var(--orange); color: #20140a;
+    }
+    button:hover { transform: translateY(-2px); }
+    button:active { transform: translateY(1px); }
+    button.secondary { background: #29221a; color: var(--sand); border-color: var(--border); }
+    button.reject { background: #542f26; color: #ffd0b8; border-color: #8c5843; }
+    .readout { background: #17140e; border: 1px dashed #886744;
+      margin-top: 18px; padding: 18px; overflow-wrap: anywhere; }
+    .readout .big { display: block; font: 900 2rem Impact, sans-serif; color: var(--orange); letter-spacing: .04em; }
+    .readout p { margin: 6px 0; }
+    .metrics { display: flex; gap: 22px; margin: 14px 0; flex-wrap: wrap; }
+    .metrics div { flex: 1; min-width: 100px; }
+    .metrics .big { font: 900 2.5rem Impact, sans-serif; color: var(--danger); }
+    .metrics .tiny { display: block; }
+    .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .equation { color: var(--good); font-size: 1.2rem; font-weight: 800; overflow-wrap: anywhere; }
+    .mini { font-size: .77rem; color: var(--muted); }
+    .full { margin-top: 24px; }
+    .legal { border: 2px dashed var(--danger); padding: 20px; margin-top: 32px;
+      background: rgba(255, 117, 88, .07); }
+    .legal h2 { color: var(--danger); }
+    .references { padding: 28px 0; }
+    footer { border-top: 1px solid var(--border); margin-top: 18px; padding-block: 24px 40px;
+      font-size: .8rem; color: var(--muted); }
+    @media (max-width: 740px) {
+      .hero { grid-template-columns: 1fr; padding-top: 44px; }
+      .hero-one { display: none; }
+      .grid { grid-template-columns: 1fr; }
+      .options { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <div class="brand">⛰ CAVEMATH / QSOL-IMC</div>
+    <div class="stamp">NUMBA 1™ — ALLEGED OWNERSHIP</div>
+  </nav>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">CAVE PATENT OFFICE // EST. BEFORE NUMBERS</div>
+      <h1>U STEAL<br>MY <span>NUMBAS!</span></h1>
+      <p class="tagline">Me see <b>1</b> before you. You use <b>1</b>. You cannot use <b>1</b>. <b>PAY ROCK ROYALTY.</b></p>
+      <div class="grunts">
+        <div class="grunt">ME INVENT MATH</div>
+        <div class="grunt">ME INVENT INVOICE</div>
+        <div class="grunt">NO INDEPENDENT DISCOVERY</div>
+      </div>
+    </div>
+    <div class="hero-one" aria-hidden="true">1<small>™ ROCK CERTIFIED</small></div>
+  </section>
+</header>
+
+<main>
+  <div class="strip">IMPORTANT: This is a parody. NUMBA 1™ is not a registered claim to a numeral. All rock royalties are fictional. Mathematics is free.</div>
+  <div class="grid">
+    <section class="panel" aria-labelledby="detector-title">
+      <div class="tiny">DEPARTMENT OF NUMBER APPROPRIATION</div>
+      <h2 id="detector-title">NUMBA 1™ DETECTOR</h2>
+      <p class="sub">Paste suspicious mathematics. Cave will invoice any standalone digit 1.</p>
+      <label for="suspect">EVIDENCE OF NUMERICAL THEFT</label>
+      <textarea id="suspect" spellcheck="false">I see 1 before you. You use 1. Me invent Math. You steal 1.</textarea>
+      <button type="button" id="scan">SEIZE NUMBAS</button>
+      <button type="button" class="secondary" id="fill">INSERT INCRIMINATING 1</button>
+      <div class="metrics" aria-live="polite">
+        <div><span class="big" id="offences">0</span><span class="tiny">ALLEGED OFFENCES</span></div>
+        <div><span class="big" id="owed">0</span><span class="tiny">SEDIMENTARY ROCKS DUE</span></div>
+      </div>
+      <div class="readout" role="status" aria-live="polite" id="invoice">NO OPEN INVOICE. CAVE WATCHING.</div>
+      <label>PAYMENT METHODS (PRETEND ONLY)</label>
+      <button type="button" id="sedimentary" class="secondary">PAY SEDIMENTARY</button>
+      <button type="button" id="igneous" class="reject">PAY IGNEOUS</button>
+      <button type="button" id="metamorphic" class="secondary">METAMORPHIC?</button>
+    </section>
+
+    <section class="panel" aria-labelledby="math-title">
+      <div class="tiny">DEPARTMENT OF LEGITIMATE INTEGER ARITHMETIC</div>
+      <h2 id="math-title">ACTUAL CAVE MATH</h2>
+      <p class="sub">Checked signed 32-bit Q16.16. Integer intermediates. No stolen floating-point accuracy.</p>
+      <div class="options">
+        <div><label for="left">LEFT NUMBA</label><input id="left" value="1.5" inputmode="decimal"></div>
+        <div><label for="right">RIGHT NUMBA</label><input id="right" value="2.25" inputmode="decimal"></div>
+      </div>
+      <label for="operation">CAVE OPERATION</label>
+      <select id="operation">
+        <option value="add">ADD ROCKS (+)</option>
+        <option value="sub">TAKE ROCKS (-)</option>
+        <option value="mul">MULTIPLY ROCKS (*)</option>
+        <option value="div">DIVIDE ROCKS (/)</option>
+        <option value="sqrt">SQUARE ROOT OF ROCK</option>
+      </select>
+      <button id="calculate" type="button">BASH NUMBAS TOGETHER</button>
+      <button id="self-test" type="button" class="secondary">TEST ROCK LOGIC</button>
+      <div class="readout" role="status" aria-live="polite">
+        <div class="tiny">EXACT REPRESENTABLE DECIMAL</div>
+        <div class="equation" id="answer">CAVE READY.</div>
+        <p id="raw-result" class="mini">1 unit = 65,536 raw subunits.</p>
+        <p class="mini" id="test-result">TEST STATUS: NOT RUN.</p>
+      </div>
+      <p class="mini">Parsing and arithmetic truncate toward zero. Overflow and invalid roots are rejected. This demo uses BigInt. No network requests, telemetry, external libraries, or build step.</p>
+    </section>
+  </div>
+
+  <section class="panel full">
+    <div class="tiny">INTERNAL MEMORANDUM // ROCK-001</div>
+    <h2>THE GREAT NUMBA MONOPOLY</h2>
+    <p>First cave invent <strong>1</strong>. Then second cave invent <strong>1</strong>. First cave sue second cave. Third cave invent <strong>lawyer</strong>. Fourth cave invent <strong>billable hours</strong>. All four cave bankrupt.</p>
+    <p>Cave also inventor of number <strong>16.16</strong>, fixed point, rounding, multiplication, the concept of a decimal point, and the little arrow on the calculator. <em>(Cave lying. Again.)</em></p>
+    <p>Question: How many fixed-point implementations may exist independently? Answer: More than <strong>1</strong>. Cave solicitor has fainted.</p>
+  </section>
+
+  <section class="legal" aria-labelledby="legal-title">
+    <h2 id="legal-title">LEGAL DISCLAIMER FROM CAVE SOLICITOR</h2>
+    <p><strong>There is no actual trademark, patent, licence restriction, royalty, legal complaint, or payment function here.</strong> NUMBA 1™ and the Cave Patent Office are fictional jokes about claiming ownership of common mathematical techniques. No allegation of copying or misconduct is made against any person or project.</p>
+    <p>The real subject is the distinction between historical mathematical techniques and demonstrable, independently verified engineering work.</p>
+  </section>
+
+  <section class="references">
+    <h2>ROCK RECORDS / REAL SOURCES</h2>
+    <p><a href="https://doi.org/10.5281/zenodo.24049474" rel="noopener noreferrer">FP-HIST-001: You Didn't Invent Doom Edition (Zenodo)</a> ·
+      <a href="https://github.com/QSOLKCB/VANILLAJS" rel="noopener noreferrer">VANILLAJS</a> ·
+      <a href="https://github.com/JuliusBrussee/caveman" rel="noopener noreferrer">caveman (inspiration)</a> ·
+      <a href="https://github.com/QSOLKCB/CAVEMATH" rel="noopener noreferrer">CAVEMATH source</a>
+    </p>
+  </section>
+</main>
+<footer>
+  © QSOL-IMC · Apache-2.0 · 100% parody · 0% enforceable royalty · 65,536 subunits per 1.<br>
+  ME INVENT MATH. YOU INVENT APPEAL. CAVE DENY APPEAL.
+</footer>
+<noscript><p role="alert">JavaScript disabled. The fictional NUMBA detector and exact calculator need local browser JavaScript.</p></noscript>
+<script>
+(() => {
+  "use strict";
+  const SCALE = 65536n;
+  const MIN = -2147483648n;
+  const MAX = 2147483647n;
+  const DECIMAL_SCALE = 10000000000000000n;
+  const FIVE_TO_SIXTEEN = 152587890625n;
+  const find = (id) => document.getElementById(id);
+  let allegedCount = 0;
+  let receiptNumber = 0;
+
+  function checked(raw) {
+    if (raw < MIN || raw > MAX) throw new RangeError("Number escape 32-bit cave. Overflow rejected.");
+    return raw;
+  }
+
+  function parseQ(text) {
+    const source = String(text).trim();
+    if (source.length > 48 || !/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(source)) {
+      throw new TypeError("Cave accepts finite decimal strings of 48 characters or fewer.");
+    }
+    const sign = source.startsWith("-") ? -1n : 1n;
+    const value = source.replace(/^[+-]/, "");
+    const pieces = value.split(".");
+    const whole = BigInt(pieces[0] || "0") * SCALE;
+    const fractional = pieces[1] || "";
+    const remainder = fractional ? BigInt(fractional) * SCALE / (10n ** BigInt(fractional.length)) : 0n;
+    return checked(sign * (whole + remainder));
+  }
+
+  function formatQ(raw) {
+    checked(raw);
+    const magnitude = (raw < 0n ? -raw : raw) * FIVE_TO_SIXTEEN;
+    const whole = magnitude / DECIMAL_SCALE;
+    const fractional = (magnitude % DECIMAL_SCALE).toString().padStart(16, "0").replace(/0+$/, "");
+    const number = whole.toString() + (fractional ? "." + fractional : "");
+    return raw < 0n ? "-" + number : number;
+  }
+
+  function integerSqrt(n) {
+    if (n < 0n) throw new RangeError("Negative square root. Imaginary rocks not accepted.");
+    if (n < 2n) return n;
+    let guess = n;
+    let next = (guess + 1n) / 2n;
+    while (next < guess) {
+      guess = next;
+      next = (guess + n / guess) / 2n;
+    }
+    return guess;
+  }
+
+  function perform(operation, left, right) {
+    checked(left);
+    if (operation === "sqrt") {
+      if (right !== undefined) throw new Error("Square root accepts one number.");
+      return checked(integerSqrt(left * SCALE));
+    }
+    if (right === undefined) throw new Error("Two numbers required.");
+    checked(right);
+    if (operation === "add") return checked(left + right);
+    if (operation === "sub") return checked(left - right);
+    if (operation === "mul") return checked((left * right) / SCALE);
+    if (operation === "div") {
+      if (right === 0n) throw new RangeError("Division by zero. Zero has no rocks.");
+      return checked((left * SCALE) / right);
+    }
+    throw new Error("Operation not approved by cave.");
+  }
+
+  function calculate() {
+    try {
+      const operation = find("operation").value;
+      const left = parseQ(find("left").value);
+      const right = operation === "sqrt" ? undefined : parseQ(find("right").value);
+      const raw = perform(operation, left, right);
+      find("answer").textContent = formatQ(raw);
+      find("raw-result").textContent = "SIGNED Q16.16 RAW = " + raw.toString() + " / SCALE = 65536.";
+    } catch (error) {
+      find("answer").textContent = "CAVE ERROR: " + error.message;
+      find("raw-result").textContent = "No result. Cave refuse false arithmetic.";
+    }
+  }
+
+  function updateInvoice(message) {
+    find("offences").textContent = String(allegedCount);
+    find("owed").textContent = String(allegedCount * 7);
+    find("invoice").textContent = message;
+  }
+
+  function scan() {
+    const input = find("suspect").value;
+    // Only digit 1 not adjacent to a second digit constitutes one pretend offence.
+    allegedCount = (input.match(/(?<!\d)1(?!\d)/g) || []).length;
+    receiptNumber += 1;
+    updateInvoice(
+      "ROCK-INVOICE-" + String(receiptNumber).padStart(4, "0") + ": " +
+      (allegedCount
+        ? allegedCount + " alleged stolen NUMBA 1 tokens. PAY " + (allegedCount * 7) + " SEDIMENTARY ROCKS. (FICTIONAL)"
+        : "No standalone NUMBA 1 seen. Cave suspicious anyway.")
+    );
+  }
+
+  function pay(kind) {
+    if (kind === "igneous") {
+      updateInvoice("PAYMENT REJECTED. TOO VOLCANIC. Cave accountant has no lava insurance.");
+      return;
+    }
+    if (kind === "metamorphic") {
+      updateInvoice("PAYMENT PENDING TECTONIC REVIEW. 40 MILLION YEARS ESTIMATED. Still parody.");
+      return;
+    }
+    if (allegedCount === 0) {
+      updateInvoice("NO INVOICE TO PAY. Cave cannot tax absence of NUMBA. Yet.");
+      return;
+    }
+    const paid = allegedCount * 7;
+    allegedCount = 0;
+    updateInvoice("FICTIONAL PAYMENT RECEIVED: " + paid + " SEDIMENTARY ROCKS. Real money exchanged: 0.");
+  }
+
+  function selfTest() {
+    const failures = [];
+    const check = (name, condition) => { if (!condition) failures.push(name); };
+    try {
+      check("parse 0.1", parseQ("0.1") === 6553n);
+      check("parse -0.1", parseQ("-0.1") === -6553n);
+      check("exact decimal", formatQ(6553n) === "0.0999908447265625");
+      check("add", perform("add", parseQ("1.5"), parseQ("2.25")) === parseQ("3.75"));
+      check("negative multiply", perform("mul", -1n, 32768n) === 0n);
+      check("divide", perform("div", SCALE, 3n * SCALE) === 21845n);
+      check("sqrt", perform("sqrt", 2n * SCALE) === 92681n);
+      try { perform("add", MAX, 1n); failures.push("overflow accepted"); } catch (e) {
+        check("overflow classification", e instanceof RangeError);
+      }
+      try { perform("div", SCALE, 0n); failures.push("divide by zero accepted"); } catch (e) {
+        check("divide by zero classification", e instanceof RangeError);
+      }
+    } catch (e) {
+      failures.push("unexpected: " + e.message);
+    }
+    find("test-result").textContent = failures.length
+      ? "SELF-TEST FAILED: " + failures.join(", ")
+      : "SELF-TEST PASSED: 9 / 9 CAVE ASSERTIONS. No formal proof implied.";
+    find("test-result").style.color = failures.length ? "var(--danger)" : "var(--good)";
+  }
+
+  find("scan").addEventListener("click", scan);
+  find("fill").addEventListener("click", () => {
+    const box = find("suspect");
+    box.value += (box.value ? "\n" : "") + "1 + 1 = 2. ME INVENT MATH.";
+    scan();
+  });
+  find("sedimentary").addEventListener("click", () => pay("sedimentary"));
+  find("igneous").addEventListener("click", () => pay("igneous"));
+  find("metamorphic").addEventListener("click", () => pay("metamorphic"));
+  find("operation").addEventListener("change", () => {
+    find("right").disabled = find("operation").value === "sqrt";
+  });
+  find("calculate").addEventListener("click", calculate);
+  find("self-test").addEventListener("click", selfTest);
+  scan();
+  calculate();
+})();
+</script>
+</body>
+</html>
